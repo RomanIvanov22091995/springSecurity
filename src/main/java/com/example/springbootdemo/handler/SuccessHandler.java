@@ -32,7 +32,7 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
                 }
             } else {
                 try {
-                    response.sendRedirect("/");
+                    response.sendRedirect("/access-denied");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
