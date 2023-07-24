@@ -111,7 +111,7 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    // Геттеры и сеттеры...
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
