@@ -1,6 +1,7 @@
 package com.example.springbootdemo.config;
 
 
+import com.example.springbootdemo.handler.SuccessHandler;
 import com.example.springbootdemo.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,10 +21,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;
+    private final SuccessHandler successHandler;
+
 
     @Autowired
-    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService) {
+    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, SuccessHandler successHandler) {
         this.userDetailsService = userDetailsService;
+        this.successHandler = successHandler;
     }
 
     @Override
@@ -36,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/success")
+                .defaultSuccessUrl(String.valueOf(successHandler))
                 .permitAll()
                 .and()
                 .logout()

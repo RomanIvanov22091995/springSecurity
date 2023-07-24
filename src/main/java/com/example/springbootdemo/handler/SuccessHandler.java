@@ -20,13 +20,19 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
         authorities.forEach(authority -> {
             if (authority.getAuthority().equals("ROLE_ADMIN")) {
                 try {
-                    response.sendRedirect("/admin/home");
+                    response.sendRedirect("/admin");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } if (authority.getAuthority().equals("ROLE_USER")){
+                try {
+                    response.sendRedirect("/user");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else {
                 try {
-                    response.sendRedirect("/user/home");
+                    response.sendRedirect("/");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
