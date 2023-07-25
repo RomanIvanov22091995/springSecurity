@@ -1,7 +1,7 @@
 package com.example.springbootdemo.controller;
 
 import com.example.springbootdemo.model.User;
-import com.example.springbootdemo.service.UserService;
+import com.example.springbootdemo.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -18,10 +18,10 @@ import java.util.List;
 @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
 public class UserController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
